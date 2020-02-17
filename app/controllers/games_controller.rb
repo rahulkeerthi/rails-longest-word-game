@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   end
 
   def score
-    time_taken = params[:end_time].to_datetime - params[:start_time].to_datetime
+    time_taken = (Time.now - params[:start_time].to_datetime).round(2)
     attempt = params[:answer]
     result = JSON.parse(open("https://wagon-dictionary.herokuapp.com/#{attempt}").read)
     att_arr = attempt.upcase.chars
